@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MusicDataContext } from "../context/MusicDataContext";
 import "./Home.css";
+
+const API_URL = import.meta.env.VITE_API_URL;
 const Home = () => {
   const navigate = useNavigate();
   const [recording, setRecording] = useState(false);
@@ -94,15 +96,12 @@ const Home = () => {
   };
 
   const sendToDB = async ({ id, title, subtitle, coverarthq }) => {
-    const response = await axios.post(
-      "http://localhost:8000/api/v1/createMusic",
-      {
-        id,
-        title,
-        subtitle,
-        coverarthq,
-      }
-    );
+    const response = await axios.post(`${API_URL}/api/v1/createMusic`, {
+      id,
+      title,
+      subtitle,
+      coverarthq,
+    });
     console.log(response.data);
   };
 
