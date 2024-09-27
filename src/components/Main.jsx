@@ -2,6 +2,8 @@ import { Box, Button, Container } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+
+const API_URL = import.meta.env.VITE_API_URL;
 const Main = () => {
   const [recording, setRecording] = useState(false);
   const navigate = useNavigate();
@@ -40,7 +42,13 @@ const Main = () => {
       var data = new FormData();
       data.append("audio", audioBlob, "recording.wav");
 
-      const response = await fetch(`${process.env.REACT_APP_SERVER_LINK}/api/v1/upload`, {
+      const serverLink = process.env.REACT_APP_SERVER_LINK;
+
+      // Log the server link
+      console.log("Server link:", serverLink);
+      // console.log("Server link:", process.env.REACT_APP_SERVER_LINK);
+
+      const response = await fetch(`${API_URL}/api/v1/upload`, {
         method: "POST",
         body: data,
       });

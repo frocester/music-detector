@@ -9,7 +9,7 @@ const History = () => {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_LINK}/api/v1/fetchFive`);
+        const response = await fetch(`${API_URL}/api/v1/fetchFive`);
         const data = await response.json();
         setSongs(data.data); 
       } catch (error) {
