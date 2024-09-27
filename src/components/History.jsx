@@ -9,7 +9,7 @@ const History = () => {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/v1/fetchFive`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/fetchFive`);
         const data = await response.json();
         setSongs(data.data); 
       } catch (error) {

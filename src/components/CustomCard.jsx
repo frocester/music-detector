@@ -12,7 +12,7 @@ const CustomCard = ({ imageUrl, title, subtitle }) => {
 
   const onclickHandler = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/v1/createEntry`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/createEntry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

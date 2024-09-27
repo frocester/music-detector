@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 const Main = () => {
   const [recording, setRecording] = useState(false);
   const navigate = useNavigate();
@@ -41,14 +41,7 @@ const Main = () => {
       console.log("Send Blob Called");
       var data = new FormData();
       data.append("audio", audioBlob, "recording.wav");
-
-      const serverLink = process.env.REACT_APP_SERVER_LINK;
-
-      // Log the server link
-      console.log("Server link:", serverLink);
-      // console.log("Server link:", process.env.REACT_APP_SERVER_LINK);
-
-      const response = await fetch(`${API_URL}/api/v1/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/upload`, {
         method: "POST",
         body: data,
       });
